@@ -21,10 +21,13 @@ class Comment(MPTTModel):
         on_delete=models.CASCADE,
         related_name='children',
         null=True,
+        blank=True,
     )
 
     attachment = models.FileField(
-        upload_to=UploadTo('comments', 'attachments'), 
+        upload_to=UploadTo('comments', 'attachments'),
+        null=True,
+        blank=True,
     )
 
     def __str__(self):
