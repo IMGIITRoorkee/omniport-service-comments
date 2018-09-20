@@ -1,8 +1,8 @@
+import swapper
 from mptt.models import MPTTModel, TreeForeignKey
 
 from django.db import models
 
-from kernel.models.root import Model
 from kernel.utils.upload_to import UploadTo
 
 
@@ -24,6 +24,13 @@ class Comment(MPTTModel):
         blank=True,
     )
 
+    commenter = models.ForeignKey(
+        to=swapper.get_model_name('kernel', 'Person'),
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
+
     attachment = models.FileField(
         upload_to=UploadTo('comments', 'attachments'),
         null=True,
@@ -37,5 +44,7 @@ class Comment(MPTTModel):
         """
 
         text = self.text
+        commenter = self.commenter
 
-        return f'{text}'
+        return f'{commenter}: {text}'
+
