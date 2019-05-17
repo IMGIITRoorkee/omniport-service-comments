@@ -1,6 +1,8 @@
 from comments.models import Comment
 from formula_one.serializers.base import ModelSerializer
-from kernel.serializers.person import AvatarSerializer
+from omniport.utils import switcher
+
+AvatarSerializer = switcher.load_serializer('kernel', 'Person', 'Avatar')
 
 
 class CommentSerializer(ModelSerializer):
