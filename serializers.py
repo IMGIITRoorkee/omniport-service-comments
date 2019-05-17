@@ -1,7 +1,6 @@
-from kernel.serializers.root import ModelSerializer
-from kernel.serializers.person import AvatarSerializer
-
 from comments.models import Comment
+from formula_one.serializers.base import ModelSerializer
+from kernel.serializers.person import AvatarSerializer
 
 
 class CommentSerializer(ModelSerializer):
@@ -32,4 +31,3 @@ class CommentSerializer(ModelSerializer):
             'datetime_created',
         )
         depth = 1
-

@@ -3,7 +3,7 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 from django.db import models
 
-from kernel.utils.upload_to import UploadTo
+from formula_one.utils.upload_to import UploadTo
 
 
 class Comment(MPTTModel):

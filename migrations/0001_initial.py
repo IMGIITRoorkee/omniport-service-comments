@@ -3,7 +3,7 @@
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-import kernel.utils.upload_to
+import formula_one.utils.upload_to
 import mptt.fields
 
 
@@ -23,11 +23,11 @@ class Migration(migrations.Migration):
                 ('datetime_created', models.DateTimeField(auto_now_add=True)),
                 ('datetime_modified', models.DateTimeField(auto_now=True)),
                 ('text', models.TextField()),
-                ('attachment', models.FileField(blank=True, null=True, upload_to=kernel.utils.upload_to.UploadTo('comments', 'attachments'))),
-                ('lft', models.PositiveIntegerField(db_index=True, editable=False)),
-                ('rght', models.PositiveIntegerField(db_index=True, editable=False)),
+                ('attachment', models.FileField(blank=True, null=True, upload_to=formula_one.utils.upload_to.UploadTo('comments', 'attachments'))),
+                ('lft', models.PositiveIntegerField(editable=False)),
+                ('rght', models.PositiveIntegerField(editable=False)),
                 ('tree_id', models.PositiveIntegerField(db_index=True, editable=False)),
-                ('level', models.PositiveIntegerField(db_index=True, editable=False)),
+                ('level', models.PositiveIntegerField(editable=False)),
                 ('commenter', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.KERNEL_PERSON_MODEL)),
                 ('parent', mptt.fields.TreeForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='children', to='comments.Comment')),
             ],
