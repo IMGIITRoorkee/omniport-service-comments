@@ -1,5 +1,5 @@
-from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.viewsets import ModelViewSet
 
 from comments.models import Comment
 from comments.serializers import CommentSerializer
@@ -7,7 +7,7 @@ from comments.serializers import CommentSerializer
 
 class CommentViewSet(ModelViewSet):
     """
-    The view for Comment model CRUD operations
+    View for CRUD operations of a comment
     """
 
     serializer_class = CommentSerializer
@@ -15,7 +15,6 @@ class CommentViewSet(ModelViewSet):
     http_method_names = [
         'get',
         'post',
-        'patch',
         'delete',
     ]
 
@@ -36,4 +35,3 @@ class CommentViewSet(ModelViewSet):
 
         person = self.request.user.person
         serializer.save(commenter=person)
-
